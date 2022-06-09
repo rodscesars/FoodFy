@@ -1,0 +1,54 @@
+{% extends "home/layout.njk" %}
+{% block content %}
+    <section class="recipe">
+        <div class="recipe_image">
+            <img src="{{ files[0].src }}"/>
+        </div>
+        <div class="recipe_info">
+            <p>{{ recipe.title }}</p>
+        </div>
+        <div class="recipe_author">
+            <p>por {{ recipe.chef_name }}</p>
+        </div>
+    </section>
+    <section>
+        <div id="ingredients" class="topic">
+            <div class="topic_info">
+                <p>Ingredientes</p>
+                <a class="button">ESCONDER</a>
+            </div>
+            <div class="topic_content">
+                <ul>
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="preparation" class="topic">
+            <div class="topic_info">
+                <p>Modo de Preparo</p>
+                <a class="button">ESCONDER</a>
+            </div>
+            <div class="topic_content">
+                <ul>
+                    {% for preparation in recipe.preparation %}
+                        <li>{{ preparation }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% if recipe.information !== '' %}
+            <div id="information" class="topic">
+                <div class="topic_info">
+                    <p>Informações adicionais</p>
+                    <a class="button">ESCONDER</a>
+                </div>
+                <div class="topic_content">
+                    <p>{{ recipe.information | striptags(true) | escape | nl2br }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+    <script src="/scripts/script_front.js"></script>
+{% endblock %}

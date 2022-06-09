@@ -1,0 +1,31 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+    <form action="/admin/users" method="POST">
+        <div class="head_user">
+            <h3>Criar usuário</h3>
+            <div class="user_buttons">
+                <button type="submit">Salvar</button>
+                <button type="button">
+                    <a href="/admin/users/create">Cancelar</a>
+                </button>
+            </div>
+        </div>
+        <div class="user-fields">
+            <div class="item">
+                <span>Nome</span>
+                <div class="input">
+                    <input type="text" name="name" placeholder="Digite o nome completo" value="{{ user.name }}" required/>
+                </div>
+            </div>
+            <div class="item">
+                <span>Email</span>
+                <div class="input">
+                    <input type="email" name="email" placeholder="Digite o seu email" value="{{ user.email }}" onblur="Validade.apply(this, 'isEmail')"/>
+                </div>
+            </div>
+            <div class="user-isAdmin">
+                <span><input type="checkbox" name="is_admin" {% if user.is_admin %} checked {% endif %}/>&nbsp;Administrador</span>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "home/layout.njk" %}
+{% block filter %}
+    <form action="/recipes" method="get">
+        <input type="text" name="filter" placeholder="Buscar uma receita"/>
+        <button type="submit">Buscar</button>
+    </form>
+{% endblock %}
+{% block content %}
+    {% if filter %}
+        <h1>Buscando por "{{ filter }}"</h1>
+    {% endif %}
+    <section class="cards">
+        {% for recipe in recipes %}
+            <div class="card pointer" id="{{ recipe.id }}">
+                <div class="card_image">
+                    {% for file in files %}
+                        {% if file.recipe_id == recipe.id %}
+                            <span style="background-image: url({{ file.src }})"/>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="card_info">
+                    <p>{{ recipe.title }}</p>
+                    <p class="author">por {{ recipe.chef_name }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <div class="pagination" data-page={{ pagination.page }} data-total={{ pagination.total }} data-filter={{ filter }}></div>
+    <script src="/scripts/script_front.js"></script>
+</main>{% endblock %}

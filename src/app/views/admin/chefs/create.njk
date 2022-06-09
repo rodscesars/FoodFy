@@ -1,0 +1,23 @@
+{% extends "admin/layout.njk"%}
+{%block content%}
+<form action="/admin/chefs" method="POST" enctype="multipart/form-data">
+  <div class="head">
+    <h3>Criando chef</h3>
+    <button class="buttons" type="submit">Salvar chef</button>
+  </div>
+  <div class="items">
+    <div class="item">
+      <div>Nome</div>
+      <div>
+        <input type="text" name="name"></div>
+    </div>
+    <div class="item">
+      <div>Avatar</div>
+      <div id="avatar-container">
+        <label for="avatar-input">Enviar Avatar</label>
+        <input id="avatar-input" name="avatar" type="file" accept="image/*"/>
+      </div>
+    </div>
+  </div>
+</form>
+{%endblock%}

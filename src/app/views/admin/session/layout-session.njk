@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Foodfy</title>
+    <link rel="stylesheet" href="\styles\session_styles.css">
+    <link rel="stylesheet" href="\styles\messages_styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    {% include "../parts/messages.njk" %}
+    <header>
+        <div class="header-session">
+            <img src="/assets/logo.png" alt="Title">
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <script src="/scripts/script_admin.js"></script>
+</body></html>

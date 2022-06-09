@@ -1,0 +1,31 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+  <section class="head">
+    <h3>Gerenciar receitas</h3>
+    <a href="/admin/recipes/create">Nova receita</a>
+  </section>
+  <section class="cards">
+    {% for recipe in recipes %}
+      <div class="card">
+        <div class="card-image">
+          {% for file in files %}
+            {% if file.recipe_id == recipe.id %}
+              <img src="{{ file.src }}" alt="{{ file.name }}"/>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-info">
+          <div class="card-title">
+            <p>{{ recipe.title }}</p>
+          </div>
+          <div class="card-author">
+            <p>por {{ recipe.chef_name }}</p>
+          </div>
+          <div class="button">
+            <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}

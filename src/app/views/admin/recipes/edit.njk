@@ -1,0 +1,92 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+  <form action="/admin/recipes?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="head">
+      <h3>Editando receita</h3>
+      <div class="buttons">
+        <button type="submit">Salvar receita</button>
+        <button type="submit" form="delete" id="delete_button">Deletar</button>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div>Imagem da receita</div>
+        <div id="photos-container">
+          <div id="photos-upload">
+            <input
+              id="photos-input"
+              name="photos"
+              type="file"
+              multiple
+              accept="image/*"
+              onchange="PhotosUpload.handleFileInput(event)"/>
+            <span class="material-icons">add</span>
+          </div>
+          <div id="photos-preview">
+            {% if files %}
+              {% for image in files %}
+                <div class="photo" id="{{ image.id }}">
+                  <img src="{{ image.src }}" alt="{{ image.name }}"/>
+                  <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                </div>
+              {% endfor %}
+              <input type="hidden" name="removed_files"/>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div>Título</div>
+        <div>
+          <input type="text" name="title" placeholder="Título da receita" value="{{ recipe.title }}"/>
+        </div>
+      </div>
+      <div class="item">
+        <div>Chef</div>
+        <div>
+          <select name="chef_id">
+            {% for chef in chefSelect %}
+              <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>{{ chef.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div id="ingredients">
+        <div>Ingrediente</div>
+        {% for ingredient in recipe.ingredients %}
+          <div class="ingredient">
+            <input type="text" name="ingredients[]" value="{{ ingredient }}"/>
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+      <div id="preparation">
+        <div>Modo de Preparo</div>
+        {% for preparation in recipe.preparation %}
+          <div class="preparation">
+            <input type="text" name="preparation[]" value="{{ preparation }}"/>
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="add-preparation">Adicionar novo passo</button>
+      <div class="item">
+        <div>Informações adicionais</div>
+        <div>
+          <textarea name="information">{{ recipe.information }}</textarea>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" name="id" value={{ recipe.id }}></form>
+    <form id="delete" action="/admin/recipes?_method=DELETE" method="POST">
+      <input type="hidden" name="id" value={{ recipe.id }}></form>
+      <script>
+        const formDelete = document.querySelector("#delete")
+        formDelete.addEventListener("submit", function (event) {
+          const confirmation = confirm("Deseja deletar?")
+          if (! confirmation) {
+            event.preventDefault()
+          }
+        })
+      </script>
+    {% endblock %}

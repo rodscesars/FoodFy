@@ -1,0 +1,28 @@
+{% extends "home/layout.njk" %}
+{% block filter %}
+    <form action="/recipes" method="get">
+        <input type="text" name="filter" placeholder="Buscar uma receita">
+            <button type="submit">Buscar</button>
+        </form>
+    {% endblock %}
+    {% block content %}
+        <section id="banner">
+            <h1>As melhores receitas</h1>
+            <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro</p>
+            <img src="/assets/chef.png" alt="Chef"></section>
+            <div class="subtitle">
+                <h2>As mais acessadas</h2>
+            </div>
+            <section class="cards">
+                {% for recipe in recipes %}
+                    <div class="card">
+                        <div class="card_image">
+                            <span style="background-image: url({{ recipe.image }})"></div>
+                            <div class="card_info">
+                                <p>{{ recipe.title }}</p>
+                                <p class="author">por {{ recipe.author }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+            {% endblock %}

@@ -1,0 +1,42 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+  <form action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="head">
+      <h3>Editando chef</h3>
+      <div class="buttons">
+        <button type="submit" form="delete" id="delete_button">Deletar</button>
+        <button type="submit">Salvar chef</button>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div>Nome</div>
+        <div>
+          <input type="text" name="name" placeholder="Nome do Chef" value="{{ chef.name }}"></div>
+        </div>
+        <div class="item">
+          <div>Avatar</div>
+          <div>
+            <input class="input_avatar" type="text" name="avatar_url" value="{{ chef.path }}"/>
+            <div id="avatar-container">
+              <label for="avatar-input">Enviar Avatar</label>
+              <input id="avatar-input" name="avatar" type="file" accept="image/*"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="id" value={{ chef.id }}></form>
+      <form id="delete" action="/admin/chefs?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{ chef.id }}"/>
+      </form>
+      <div hidden>{{ chef.total_recipes }}</div>
+      <script>
+        const formDelete = document.querySelector("#delete")
+        formDelete.addEventListener("submit", function (event) {
+          const confirmation = confirm("Deseja deletar?")
+          if (! confirmation) {
+            event.preventDefault()
+          }
+        })
+      </script>
+    {% endblock %}

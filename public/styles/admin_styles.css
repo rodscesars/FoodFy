@@ -1,0 +1,556 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* HEADER */
+
+header {
+  background-color: #111111;
+  opacity: 100%;
+  height: 80px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+header a img {
+  margin-left: 230px;
+  margin-right: 50.4px;
+}
+
+header .links-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.links a {
+  margin-right: 30px;
+  text-decoration: none;
+  color:  #999999;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.links a.active {
+  color: #FFFFFF;
+}
+
+#logout {
+  margin-right: 50px;
+}
+
+#logout-button {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: bold;
+  justify-items: flex-end;
+}
+
+main {
+  width: 940px;
+  margin: 0 auto
+}
+
+/* HEAD DO FORM */
+
+.head {
+  display: flex;
+  position: relative;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.head h1 {
+  font-size: 24px;
+}
+
+.head h3 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.head a {
+  text-decoration: none;
+  background-color: #6558C3;
+  opacity: 100%;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 9px 20px 9px 20px;
+  color: #FFFFFF;
+  right: 0px;
+  position: absolute;
+}
+
+.buttons {
+  position: absolute;
+  right: 0px;
+}
+
+button[type=submit] {
+  border: none;
+  background-color: #6558C3;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 9px 20px 9px 20px;
+  text-align: right;
+  cursor: pointer;
+}
+
+#delete_button {
+  background-color: red;
+  margin-left: 10px;
+}
+
+/* CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+}
+
+.card-image img {
+  display: block;
+  background-position: center center;
+  background-size: cover;
+  width: 172px;
+  height: 80px;
+  border-radius: 8.57px;
+  margin-right: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-author {
+  font-size: 14px;
+  color: #777777;
+  margin-bottom: 10px;
+}
+
+.button a {
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  color: #6558C3;
+  opacity: 100%;
+}
+
+/* ITENS */
+
+.items {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+select:invalid {
+  color: #999999;
+}
+
+option {
+  color: #111111
+}
+
+.item input, select {
+  margin-top: 10px;
+  width: 100%;
+  height: 49px;
+  box-sizing: border-box;
+  border: 1px solid #DDDDDD;
+  background: #FFFFFF;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+.ingredient input, .preparation input {
+  margin-top: 10px;
+  width: 100%;
+  height: 49px;
+  box-sizing: border-box;
+  border: 1px solid #DDDDDD;
+  background: #FFFFFF;
+  border-radius: 4px;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+button[type=button] {
+  margin-top: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6558C3;
+  opacity: 100%;
+  background: none;
+  margin-bottom: 30px;
+}
+
+/* RECIPES */
+
+.recipe_info {
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.recipe_author {
+  font-size: 20px;
+  color: #777777;
+  text-align: center;
+  margin-bottom: 31px;
+}
+
+.topic_info {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 19px;
+}
+
+.topic_content {
+  color: #444444;
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 41px;
+}
+
+li {
+  list-style-type: '-  ';
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  height: 257px;
+  box-sizing: border-box;
+  border: 1px solid #DDDDDD;
+  background: #FFFFFF;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  padding-left: 20px;
+  padding-top: 18px;
+  margin-top: 10px;    
+  margin-bottom: 500px;
+  
+}
+
+/* CHEFS */
+
+.chef_recipes {
+  margin-bottom: 300px;
+}
+
+.chef_recipes h1 {
+  margin-bottom: 31px;
+}
+
+.chefs_cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px
+}
+
+.chef_card {
+  display: flex;
+  align-items: center;
+}
+
+.chef_card-image img {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.chef_name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* SHOW */
+
+.chef_image img {
+  margin: 0 auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+/* PHOTOS CONTAINER  */
+
+#photos-container {
+  display: grid;
+  grid-template-columns: 149px 1fr  ;
+  grid-gap: 10.5px;
+  align-items: center;
+  margin-top: 10.5px;
+  margin-bottom: 30.5px;
+}
+
+/* PHOTOS UPLOAD */
+
+#photos-upload {
+  width: 149px;
+  height: 149px;
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 3.5px;
+  display: block;
+  overflow: hidden;
+}
+
+#photos-input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#photos-upload span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #777777;
+  width: 100%;
+  height: 100%
+}
+
+/* PHOTO PREVIEW */
+
+#photos-preview {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
+
+#photos-preview .photo {
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+
+form .item #photos-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#photos-preview .photo i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.8);
+  color: red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+#photos-preview .photo:hover i {
+opacity: 1;
+}
+
+/* AVATAR INPUT */
+
+#avatar-container {
+  margin-top: 10px;
+  width: 139px;
+  height: 37px;
+  position: relative;
+  background: #6558C3 100%;
+  border-radius: 4px;
+  display: block;
+  overflow: hidden;
+}
+
+#avatar-input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.item .input_avatar {
+  margin: 0;
+  margin-top: 10px;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  height: 100%;
+  }
+
+  /* PHOTO HIGHLIGHT */
+
+ .highlight img {
+  display: block;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  height: 280px;
+  width: 100%;
+  object-fit: cover;
+  }
+
+.gallery-preview {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.gallery-preview img {
+  width: 50px;
+  height: 49.7px;
+  object-fit: cover;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.gallery-preview img:hover,
+.gallery-preview img.active {
+  opacity: 1;
+}
+
+/* USERS*/
+
+.users_cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.user_info .user_name {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.user_info .user_email {
+  font-size: 14px;
+  color:#777777;
+  margin-bottom: 16px;
+}
+
+.user-navigation {
+  display: flex;
+  align-items: center;
+}
+
+.user-navigation a {
+  font-weight: bold;
+  font-size: 14px;
+  color: #6558C3;
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+#remove-user {
+  font-weight: bold;
+  font-size: 14px;
+  color: #F55A5A;
+  background-color: white;
+  padding: 0; 
+}
+
+/* USER FORM */
+
+.head_user {
+  display: flex;
+  position: relative;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.head_user h3 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.user_buttons {
+  position: absolute;
+  right: 0px;
+}
+
+.user_buttons button[type="submit"] {
+  border-radius: 4px;
+  width: 140px;
+  text-align: center;
+  margin-right: 16px;
+}
+
+.user_buttons button[type="button"],
+.user_buttons button[type="button"] a {
+  background-color: #8A8A8A;
+  height: 37px;
+  width: 140px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #FFFFFF
+}
+
+.user-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}
+
+.user-fields .item span,
+.user-isAdmin span {
+  font-weight: bold;
+  font-size: 16px;
+}

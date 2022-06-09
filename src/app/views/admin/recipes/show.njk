@@ -1,0 +1,65 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+  <section>
+    <div class="head">
+      <h1>Receita: {{ recipe.title }}</h1>
+      <a href="/admin/recipes/{{ recipe.id }}/edit" class="button">Editar Receita</a>
+    </div>
+    <div class="gallery">
+      <div class="highlight">
+        {% if not files[0] %}
+          <img src="http://place-hold.it/1200x800?text=PRODUTO SEM FOTO"/>
+        {% else %}
+          <img src="{{ files[0].src }}" alt="{{ files[0].name }}"/>
+        {% endif %}
+      </div>
+      <div class="gallery-preview">
+        {% for image in files %}
+          <img src="{{ image.src }}" alt="{{ image.name }}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)">
+          {% endfor %}
+        </div>
+      </div>
+      <div class="recipe_info">
+        <p>{{ recipe.title }}</p>
+      </div>
+      <div class="recipe_author">
+        <p>por {{ recipe.chef_name }}</p>
+      </div>
+    </section>
+    <section>
+      <div class="topic_info">Ingredientes</div>
+      <div class="topic_content">
+        <ul>
+          {% for ingredient in recipe.ingredients %}
+            <li>{{ ingredient }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="topic_info">Modo de Preparo</div>
+      <div class="topic_content">
+        <ul>
+          {% for preparation in recipe.preparation %}
+            <li>{{ preparation }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if recipe.information !== '' %}
+        <div class="topic_info">Informações adicionais</div>
+        <div class="topic_content">
+          <p>{{ recipe.information | striptags(true) | escape | nl2br }}</p>
+        </div>
+      {% endif %}
+    </section>
+    <script>
+      const ImageGallery = {
+        highlight: document.querySelector(".gallery .highlight > img"), // pega a primeira imagem do highlight
+        previews: document.querySelectorAll(".gallery-preview img"), // pega todas as imagens de previews
+        setImage(event) {
+          const {target} = event;
+          ImageGallery.previews.forEach((preview) => preview.classList.remove("active")); // para cada imagem de preview remove a a classe active
+          target.classList.add("active"); // no evento(foto preview) clicado, adiciona a classe active
+          ImageGallery.highlight.src = target.src; // muda a foto do highlight pela foto do target
+        }
+      };
+    </script>
+  {% endblock %}
