@@ -49,29 +49,27 @@ const PhotosUpload = {
   uploadLimit: 5,
   files: [],
   handleFileInput(event) {
-    const { files: fileList } = event.target; //está pegando os files do input e denominando fileList
-    PhotosUpload.input = event.target; // a let input agora é o input do target
+    const { files: fileList } = event.target;
+    PhotosUpload.input = event.target;
 
-    if (PhotosUpload.hasLimit(event)) return; //se houver limitação, trava aqui.
+    if (PhotosUpload.hasLimit(event)) return;
 
     Array.from(fileList).forEach((file) => {
-      //transforma fileList em um array e roda um forEach para cada file
-      PhotosUpload.files.push(file); //adiciona cada file para o array files
+      PhotosUpload.files.push(file);
 
-      const reader = new FileReader(); //constructor que permite ler arquivos
+      const reader = new FileReader();
 
       reader.onload = () => {
-        //onload significa quando tiver 'pronto', então vai rodar a função
-        const image = new Image(); //é a mesma coisa de criar uma tag <img/>
-        image.src = String(reader.result); //usa o constructor para se certificar que o resultado repassado para a url será uma String
-        const div = PhotosUpload.getContainer(image); //a função retorna uma div com um a imagem repassada que é declarada na const
-        PhotosUpload.preview.appendChild(div); // adiciona no elemento cujo id é "photos-preview" um child com a div criada
+        const image = new Image();
+        image.src = String(reader.result);
+        const div = PhotosUpload.getContainer(image);
+        PhotosUpload.preview.appendChild(div);
       };
 
-      reader.readAsDataURL(file); //o reader ficará 'pronto' quando ele ler a data de cada file
+      reader.readAsDataURL(file);
     });
 
-    PhotosUpload.input.files = PhotosUpload.getAllFiles(); //modificando os files do target do evento(input) para o DataTransfer
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
   },
   hasLimit(event) {
     const { uploadLimit, input, preview } = PhotosUpload;
@@ -80,17 +78,16 @@ const PhotosUpload = {
     if (fileList.length > uploadLimit) {
       alert(`Envia no máximo ${uploadLimit} fotos`);
       event.preventdefault();
-      return true; //retorna true se houver limitação
+      return true;
     }
 
     const photoDiv = [];
     preview.childNodes.forEach((item) => {
-      //childNodes são todos os filhos da div preview, então para cada item
       if (item.classList && item.classList.value == "photo")
-        photoDiv.push(item); //COLOCA DENTRO DO ARRAY PHOTODIV O ITEM
+        photoDiv.push(item);
     });
 
-    const totalPhotos = fileList.length + photoDiv.length; //Soma os files adicionados pela primeira vez na fileList e todos que forem adicionados posteriormente
+    const totalPhotos = fileList.length + photoDiv.length;
 
     if (totalPhotos > uploadLimit) {
       alert("Você atingiu o limite máximo de fotos");
@@ -98,40 +95,40 @@ const PhotosUpload = {
       return true;
     }
 
-    return false; //retorna false caso não haja limitação
+    return false;
   },
   getAllFiles() {
     const dataTransfer =
-      new ClipboardEvent("").clipboardData || new DataTransfer(); //o primeiro é para FireFox que não possui o DataTransfer
-    PhotosUpload.files.forEach((file) => dataTransfer.items.add(file)); //adiciona nos items do dataTransfer cada file
+      new ClipboardEvent("").clipboardData || new DataTransfer();
+    PhotosUpload.files.forEach((file) => dataTransfer.items.add(file));
     return dataTransfer.files;
   },
   getContainer(image) {
-    const div = document.createElement("div"); //criando no document um elemento <div>
-    div.classList.add("photo"); //adiciona uma class "photo" para essa a div criada
+    const div = document.createElement("div");
+    div.classList.add("photo");
     div.onclick = PhotosUpload.removePhoto;
-    div.appendChild(image); //cria um child com a image dentro da div
-    div.appendChild(PhotosUpload.getRemoveButton()); //tá acrescentando o botão
+    div.appendChild(image);
+    div.appendChild(PhotosUpload.getRemoveButton());
     return div;
   },
   getRemoveButton() {
-    const button = document.createElement("i"); //cria um elemento do tipo icon
-    button.classList.add("material-icons"); //adiciona essa class
+    const button = document.createElement("i");
+    button.classList.add("material-icons");
     button.innerHTML = "close";
     return button;
   },
   removePhoto(event) {
-    const photoDiv = event.target.parentNode; //o elemento pai do target do event (no caso a div com a class 'photo')
-    const photosArray = Array.from(PhotosUpload.preview.children); //todas as fotos dentro de #photos-preview
-    const index = photosArray.indexOf(photoDiv); //pega o index da foto clicada
+    const photoDiv = event.target.parentNode;
+    const photosArray = Array.from(PhotosUpload.preview.children);
+    const index = photosArray.indexOf(photoDiv);
 
-    PhotosUpload.files.splice(index, 1); //o splice remove um elemento do array, passando seu index e a quantidade 1 (ele mesmo)
-    PhotosUpload.input.files = PhotosUpload.getAllFiles(); //atualiza os files do input com os do datatransfer
+    PhotosUpload.files.splice(index, 1);
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
-    photoDiv.remove(); //remove a div com foto do photopreview
+    photoDiv.remove();
   },
   removeOldPhoto(event) {
-    const photoDiv = event.target.parentNode; //div que contem a foto
+    const photoDiv = event.target.parentNode;
 
     if (photoDiv.id) {
       const removedFiles = document.querySelector(

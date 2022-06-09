@@ -52,9 +52,9 @@ module.exports = {
   async deleteFile(id) {
     try {
       const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id]);
-      const file = result.rows[0]; //pega o file pelo id
+      const file = result.rows[0];
 
-      fs.unlinkSync(file.path); //sincroniza a path do file com o fs, deleta o arquivo
+      fs.unlinkSync(file.path);
 
       await db.query(`DELETE FROM files WHERE id = $1`, [id]);
     } catch (err) {

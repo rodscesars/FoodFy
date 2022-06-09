@@ -23,7 +23,7 @@ async function post(req, res, next) {
 
   let { name, email } = req.body;
 
-  const user = await User.findOne({ where: { name }, or: { email } }); //vai verificar se já não existe o usuario
+  const user = await User.findOne({ where: { name }, or: { email } });
 
   if (user)
     return res.render("admin/user/create", {

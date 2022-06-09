@@ -19,10 +19,10 @@ module.exports = {
     try {
       const user = req.user;
 
-      const token = crypto.randomBytes(20).toString("hex"); //cria um token com 20 bytes no formato hexadecimal
+      const token = crypto.randomBytes(20).toString("hex");
 
       let now = new Date();
-      now = now.setHours(now.getHours() + 1); //EXPIRA EM UMA HORA APÓS A CRIAÇÃO
+      now = now.setHours(now.getHours() + 1);
 
       await User.update(user.id, {
         reset_token: token,

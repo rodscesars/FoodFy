@@ -21,8 +21,6 @@ routes.post("/login", SessionValidator.login, SessionController.login);
 
 routes.post("/logout", SessionController.logout);
 
-// RESET/FORGOT PASSWORD
-
 routes.get("/forgot-password", SessionController.forgotForm);
 
 routes.post(
@@ -34,8 +32,6 @@ routes.post(
 routes.get("/password-reset", SessionController.resetForm);
 
 routes.post("/password-reset", SessionValidator.reset, SessionController.reset);
-
-//USERS//
 
 routes.get("/", onlyUsers, adminValidation, UserController.list);
 routes.get("/create", onlyUsers, adminValidation, UserController.create);

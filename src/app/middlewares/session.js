@@ -51,7 +51,6 @@ async function userRecipesValidation(req, res, next) {
     }
   }
 
-  //Verificar se o usuário é um administrador
   const user = await User.findOne({ where: { id } });
 
   if (!forNext(allRecipesPromise, req.params.id) && !user.is_admin) {

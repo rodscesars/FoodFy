@@ -48,8 +48,6 @@ module.exports = {
 
     if (!chef) return res.send("Chef not found!");
 
-    //CRIAR SRC DA IMAGEM DO CHEF
-
     const avatarFile = {
       src: `${req.protocol}://${req.headers.host}${chef.path.replace(
         "public",
@@ -57,12 +55,8 @@ module.exports = {
       )}`,
     };
 
-    //PEGAR AS RECEITAS
-
     results = await Chef.recipeIndex(req.params.id);
     const recipeIndex = results.rows;
-
-    //PEGAR IMAGEM DAS RECEITAS
 
     const recipeFilesPromise = recipeIndex.map((recipe) =>
       Recipe.allRecipeFiles(recipe.id).then((result) => ({ ...result.rows[0] }))
