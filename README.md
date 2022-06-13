@@ -61,7 +61,7 @@ $ npm install
 # Edite as informações com o seu usuário e senha
 
 # Também será necessário alterar o arquivo "mailer.js" localizado na pasta "src/config"
-# Edite de acordo com as suas configurações do [Mailtrap](https://mailtrap.io/)
+# Edite de acordo com as suas configurações do Mailtrap (https://mailtrap.io/)
 
 # Em seguida rode o arquivo "seed.js", para criação de um usuário administrador padrão
 # email: admin@foody.com
