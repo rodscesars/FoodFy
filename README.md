@@ -34,7 +34,6 @@ Website de gerenciamento de chefs e receitas desenvolvido durante o LaunchBase d
 - [Multer](https://github.com/expressjs/multer)
 - [PostgreSQL](https://www.postgresql.org/)
 - [BcryptJS](https://github.com/dcodeIO/bcrypt.js)
-- [Faker.js](https://github.com/Marak/Faker.js)
 
 
 # Instalação
