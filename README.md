@@ -16,7 +16,7 @@ Website de gerenciamento de chefs e receitas desenvolvido durante o LaunchBase d
 * Acesso para administrador
 * Cadastro de usuários, chefs e receitas
 * Banco de dados PostgreSQL.
-* Upload de imagems com Multer.
+* Upload de imagens com Multer.
 * Páginas dinâmicas com Nunjucks.
 * Sistema de recuperação de senha através do email.
 
